@@ -11,9 +11,8 @@ type Props = {
   nick: string | undefined
   onChangeName: (e: ChangeEvent<HTMLInputElement>) => void
   onClickLogout: () => void
-  patchPhoto: () => void
+  patchPhoto: (file?: File) => void
   photo?: any
-  savePhoto: (file: File) => void
   valueOfName: string | undefined
 }
 
@@ -24,7 +23,7 @@ export const PersonalInformation: FC<Props> = ({
   onClickLogout,
   patchPhoto,
   photo,
-  savePhoto,
+
   valueOfName,
 }) => {
   const [isShow, setShow] = useState(false)
@@ -38,8 +37,7 @@ export const PersonalInformation: FC<Props> = ({
     const selectedFile = event.currentTarget.files?.[0]
 
     if (selectedFile) {
-      savePhoto(selectedFile)
-      patchPhoto()
+      patchPhoto(selectedFile)
     }
   }
   const handleOnChange = () => {

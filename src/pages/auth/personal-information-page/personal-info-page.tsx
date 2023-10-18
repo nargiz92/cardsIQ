@@ -6,7 +6,6 @@ import { useGetMeQuery, useLogoutMutation, useUpdatedUserDataMutation } from '@/
 import s from './personal-page.module.scss'
 
 export const PersonalInfoPage = () => {
-  const [avaMy, setAvaMy] = useState<any>('')
   const { data: me } = useGetMeQuery()
   const [nick, setNick] = useState<string | undefined>(me?.name)
   const [logout] = useLogoutMutation()
@@ -22,18 +21,20 @@ export const PersonalInfoPage = () => {
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setNewName(e.currentTarget.value)
   }
-  const patchData = () => {
+  const patchData = (file?: File) => {
     const formData = new FormData()
 
-    if (avaMy) {
-      formData.append('avatar', avaMy)
+    if (file) {
+      formData.append('avatar', file)
     }
     if (nick) {
       formData.append('name', nick)
     }
-
+    // console.log({ avaMy, formData, nick })
     userDataForUpdate(formData)
   }
+  //
+  // console.log({ avaMy })
 
   return (
     <div className={s.container}>
@@ -44,7 +45,7 @@ export const PersonalInfoPage = () => {
         onClickLogout={handleLogout}
         patchPhoto={patchData}
         photo={me?.avatar}
-        savePhoto={setAvaMy}
+        // savePhoto={setAvaMy}
         valueOfName={nick}
       />
     </div>
