@@ -1,0 +1,28 @@
+@use "src/styles/mixins";
+
+.checkEmailContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+
+  .imgContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+
+    .emailImg {
+      width: 50px;
+      height: 50px;
+
+      background-position: center;
+      background-size: cover;
+
+      fill: var(--color-accent-500);
+    }
+  }
+}

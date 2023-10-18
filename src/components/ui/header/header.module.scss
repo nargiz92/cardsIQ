@@ -1,0 +1,40 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  height: 60px;
+  padding: 0 100px;
+
+  background: var(--color-dark-700);
+  border-bottom: 1px solid var(--color-dark-500);
+  box-shadow:
+    0 2px 4px rgb(0 0 0 / 10%),
+    0 2px 16px 4px rgb(0 0 0 / 10%),
+    0 8px 32px 8px rgb(0 0 0 / 20%),
+    linear-gradient(90deg, rgb(255 255 255 / 10%) 0%, rgb(0 0 0 / 10%) 100%);
+
+  .container {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .nameAndMenu {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+
+    .nick {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.logo {
+  background-image: url("src/styles/assets/icons/card IQ.png");
+  background-position: center;
+  background-size: cover;
+}

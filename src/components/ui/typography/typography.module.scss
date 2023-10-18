@@ -1,0 +1,127 @@
+@use "src/styles/mixins";
+
+.large {
+  @include mixins.text(
+    var(--font-size-xxl),
+    var(--font-weight-bold),
+    var(--line-height-l)
+  );
+
+  margin: 0;
+}
+
+.h1 {
+  @include mixins.text(
+    var(--font-size-xl),
+    var(--font-weight-bold),
+    var(--line-height-l)
+  );
+
+  margin: 0;
+}
+
+.h2 {
+  @include mixins.text(
+    var(--font-size-l),
+    var(--font-weight-bold),
+    var(--line-height-m)
+  );
+
+  margin: 0;
+}
+
+.h3 {
+  @include mixins.text(
+    var(--font-size-m),
+    var(--font-weight-bold),
+    var(--line-height-m)
+  );
+
+  margin: 0;
+}
+
+.body1 {
+  @include mixins.text(
+    var(--font-size-s),
+    var(--font-weight-regular),
+    var(--line-height-m)
+  );
+
+  margin: 0;
+}
+
+.body2 {
+  @include mixins.text(
+    var(--font-size-m),
+    var(--font-weight-regular),
+    var(--line-height-m)
+  );
+
+  margin: 0;
+}
+
+.subtitle1 {
+  @include mixins.text(
+    var(--font-size-m),
+    var(--font-weight-bold),
+    var(--line-height-m)
+  );
+
+  margin: 0;
+}
+
+.subtitle2 {
+  @include mixins.text(
+    var(--font-size-s),
+    var(--font-weight-bold),
+    var(--line-height-m)
+  );
+
+  margin: 0;
+}
+
+.caption {
+  @include mixins.text(
+    var(--font-size-xs),
+    var(--font-weight-regular),
+    var(--line-height-s)
+  );
+
+  margin: 0;
+}
+
+.overline {
+  @include mixins.text(
+    var(--font-size-xs),
+    var(--font-weight-bold),
+    var(--line-height-s)
+  );
+}
+
+.link1 {
+  @include mixins.text(
+    var(--font-size-s),
+    var(--font-weight-regular),
+    var(--line-height-m)
+  );
+
+  text-decoration: underline;
+}
+
+.link2 {
+  @include mixins.text(
+    var(--font-size-xs),
+    var(--font-weight-regular),
+    var(--line-height-s)
+  );
+
+  text-decoration: underline;
+}
+
+.errorMessage {
+  color: var(--color-danger-300);
+}
+
+.secondary {
+  color: var(--color-dark-100);
+}

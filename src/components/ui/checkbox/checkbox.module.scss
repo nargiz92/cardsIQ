@@ -1,0 +1,72 @@
+.root {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  background-color: var(--color-light-100);
+  border: 2px solid var(--color-light-900);
+  border-radius: 2px;
+
+  &[data-state="unchecked"] {
+    background-color: transparent;
+  }
+
+  &:disabled {
+    cursor: initial;
+    background-color: var(--color-dark-100);
+  }
+}
+
+.indicator {
+  color: var(--color-dark-900);
+
+  &:disabled {
+    color: var(--color-light-700);
+  }
+}
+
+.label {
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+
+  font-size: var(--font-size-s);
+  color: #fff;
+}
+
+.buttonWrapper {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  &:active,
+  &:focus {
+    background-color: var(--color-dark-100);
+    border-radius: 50%;
+  }
+
+  &:disabled {
+    cursor: initial;
+  }
+
+  &:hover {
+    background-color: var(--color-dark-500);
+    border-radius: 50%;
+    box-shadow:
+      0 0 10px 0 rgb(0 0 0 / 20%),
+      0 0 20px 0 rgb(0 0 0 / 15%),
+      0 0 30px 0 rgb(0 0 0 / 10%),
+      0 0 40px 0 rgb(0 0 0 / 5%);
+  }
+}

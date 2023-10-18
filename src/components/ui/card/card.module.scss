@@ -1,0 +1,32 @@
+@use "src/styles/mixins";
+
+.cardsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  width: 26.25rem;
+  padding: 2.063rem;
+
+  background-color: var(--color-dark-700);
+  filter: drop-shadow(-1px -1px 2px rgb(0 0 0 / 10%))
+    drop-shadow(1px 1px 2px rgb(0 0 0 / 10%));
+  border: 1px solid var(--color-dark-500);
+}
+
+.titleConteiner {
+  display: flex;
+  justify-content: center;
+
+  .title {
+    margin: 0;
+
+    &.secondary {
+      @include mixins.text(
+        var(----font-size-xxl),
+        var(--font-weight-bold),
+        var(--line-height-l)
+      );
+    }
+  }
+}

@@ -1,0 +1,65 @@
+.decksContainer {
+  .titleAndButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 9px;
+  }
+
+  .settingsContainer {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+}
+
+.modalContainer {
+  display: flex;
+  grid-gap: 25px 0;
+  flex-direction: column;
+
+  .coverImg {
+    width: 7.3916rem;
+    height: 3rem;
+
+    background-position: center;
+    background-size: cover;
+    border-radius: 0.125rem;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.iconButton {
+  cursor: pointer;
+
+  width: 23px;
+  height: 23px;
+  padding: 0;
+
+  background: transparent center;
+  background-size: cover;
+  border: none;
+}
+
+.iconSort {
+  background-position: center;
+  background-size: cover;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+}
+
+.imgAndNameContainer {
+  display: flex;
+  gap: 0.62rem;
+  align-items: center;
+}

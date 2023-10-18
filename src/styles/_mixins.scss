@@ -1,0 +1,31 @@
+@mixin text($fontSize, $fontWeight, $lineHeight) {
+  font-family: inherit;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  font-style: normal;
+  line-height: $lineHeight;
+  color: var(--color-text-primary);
+
+  &.secondary {
+    color: var(--color-text-secondary);
+  }
+
+  &.inherit {
+    color: inherit;
+  }
+}
+
+@mixin text-of-button($fontSize, $fontWeight, $lineHeight, $color) {
+  font-family: inherit;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  font-style: normal;
+  line-height: $lineHeight;
+  color: $color;
+}
+
+@mixin flex-mx($display, $justifyContent, $alignItems) {
+  display: $display;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}

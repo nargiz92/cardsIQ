@@ -1,0 +1,155 @@
+.buttons {
+  cursor: pointer;
+
+  width: 36px;
+  height: 36px;
+
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+
+  &.isAvatar {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.isTooltip {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+}
+
+.portal {
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  border: 1px solid var(--color-dark-500);
+  border-right-width: 100px;
+  border-bottom: 132px solid var(--color-dark-700);
+  border-left-width: 100px;
+}
+
+.dropdownMenuContent {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  padding: 12px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 4px;
+  box-shadow:
+    0 10px 38px -10px rgb(22 23 24 / 35%),
+    0 10px 20px -15px rgb(22 23 24 / 20%);
+
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.withTooltp {
+    width: 130px;
+  }
+
+  &.withAvatar {
+    width: 200px;
+  }
+}
+
+.arrowBox {
+  fill: var(--color-dark-500);
+  stroke: var(--color-dark-700);
+  stroke-width: 3px;
+}
+
+.arrow {
+  position: absolute;
+  top: -3px;
+  left: calc(50% - 3px);
+  transform: rotate(45deg);
+
+  width: 6px;
+  height: 6px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-top: none;
+  border-left: none;
+}
+
+.dropdownMenuItem {
+  user-select: none;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding: 12px 0;
+
+  font-size: 13px;
+  line-height: 1;
+  color: var(--violet-11);
+
+  border-bottom: 1px solid var(--color-dark-500);
+  border-radius: 3px;
+  outline: none;
+
+  &:hover {
+    background-color: var(--color-accent-900);
+  }
+}
+
+.dropdownMenuItemAvatars {
+  display: flex;
+  justify-content: start;
+
+  width: 217px;
+  padding: 12px 0;
+
+  border-bottom: 1px solid var(--color-dark-500);
+
+  &:hover {
+    background-color: var(--color-accent-900);
+  }
+
+  .iconContainer {
+    width: 36px;
+    height: 36px;
+    margin-right: 7px;
+
+    background-color: transparent;
+    background-position: center;
+    border-radius: 50%;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2px;
+
+    .nickEmail {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+
+  width: 22px;
+  height: 22px;
+  margin-right: 7px;
+}

@@ -1,0 +1,21 @@
+.titleAndButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonsWithIconContainer {
+  display: flex;
+  gap: 0.62rem;
+}
+
+.imgAndTitle {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.imgOfDecks {
+  background-position: center;
+  background-size: cover;
+}

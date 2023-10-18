@@ -1,0 +1,26 @@
+.someUserPhotos {
+  height: 119px;
+  background-position: center;
+  background-size: cover;
+
+  &.isFullWidth {
+    width: 100%;
+  }
+}
+
+.containers {
+  margin: 25px 0;
+}
+
+.fileImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 7.4375rem;
+
+  background-position: center;
+  background-size: cover;
+  border-radius: 0.125rem;
+}

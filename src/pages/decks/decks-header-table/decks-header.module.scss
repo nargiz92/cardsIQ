@@ -1,0 +1,17 @@
+.container {
+  cursor: pointer;
+
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: start;
+
+  .iconSort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-position: center;
+    background-size: cover;
+  }
+}

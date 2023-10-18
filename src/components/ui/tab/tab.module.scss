@@ -1,0 +1,56 @@
+@use "src/styles/mixins";
+
+.roots {
+  display: flex;
+  flex-direction: column;
+
+  .list {
+    display: flex;
+    flex-shrink: 0;
+
+    .tabsTrigger {
+      @include mixins.text-of-button(
+        var(--font-size-m),
+        var(--font-weight-regular),
+        var(--line-height-m),
+        var(--color-text-secondary)
+      );
+
+      all: unset;
+
+      cursor: pointer;
+
+      min-width: 60px;
+      padding: 6px 24px;
+
+      text-align: center;
+
+      border: 1px solid var(--color-dark-300);
+      border-radius: 2px 0;
+
+      &.fullWidth {
+        flex-grow: 1;
+      }
+
+      &:focus-visible {
+        background: var(--color-dark-700);
+        border: 2px solid var(--color-text-primary);
+      }
+
+      &:hover {
+        color: var(--color-dark-100);
+        background-color: var(--color-dark-300);
+      }
+
+      &[data-state="active"] {
+        background-color: var(--color-accent-500);
+      }
+    }
+
+    &[data-disabled] {
+      color: var(--color-dark-300);
+      background-color: var(--color-dark-700);
+      border: 1px solid var(--color-dark-300);
+    }
+  }
+}
