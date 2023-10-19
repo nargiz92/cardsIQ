@@ -1,27 +1,57 @@
-# React + TypeScript + Vite
+# CARDSIQ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CARDSIQ is an application that helps you learn anything. It allows you to create, manage, and study flashcards efficiently, making the learning process fun and interactive.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create and manage decks of flashcards.
+- Add, edit, and delete flashcards within your decks.
+- Smart card generation based on card ratings.
+- Study flashcards with an attempt counter.
+- Study flashcards with photos.
+- Study flashcards from your friends.
+- Categorize and filter decks for easy access.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Before getting started, make sure you have the following installed:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Installation
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/yourusername/cardsiq.git
+   cd cardsiq
+The application will be available at https://cards-mpejhh4ay-nargiz92.vercel.app/.
+If you want watch storybooks stories visit https://cards-o967l9c7o-nargiz92.vercel.app/?path=%2Fstory%2Fcomponents-auth-check-email--primary
+
+Usage
+Create decks and add flashcards.
+Study your flashcards using the interactive interface.
+Collaborate with friends to learn together.
+Enjoy efficient and enjoyable learning!
+Contributing
+We welcome contributions from the community. If you'd like to contribute to this project, please follow our Contribution Guidelines.
+
+License
+This project is licensed under the MIT License.
+
+Acknowledgments
+This project relies on the following libraries and tools:
+
+React
+Redux Toolkit
+React Router
+TypeScript
+For more information, please refer to the package.json file.
+
+Contact
+For questions, feedback, or support, please contact ada.tagaeva@gmail.com
+
+Happy learning!
