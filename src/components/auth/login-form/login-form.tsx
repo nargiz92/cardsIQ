@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, KeyboardEvent } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -44,11 +44,17 @@ export const LoginForm: FC<Props> = ({ onSubmit }) => {
   const handleForgotPassword = () => {
     navigate('/forgot_password')
   }
+  const handleKeyPress = (event: KeyboardEvent<HTMLFormElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      handleSubmit(onHandlerSubmit)()
+    }
+  }
 
   return (
     <div className={styleCommon.containerForCards}>
       <Card title={'Sign in'}>
-        <form onSubmit={handleSubmit(onHandlerSubmit)}>
+        <form onKeyDown={handleKeyPress} onSubmit={handleSubmit(onHandlerSubmit)}>
           {/*<DevTool control={control} />*/}
           <div className={s.emailContainer}>
             <ControlledTextField
