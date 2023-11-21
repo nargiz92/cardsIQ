@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, KeyboardEvent } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button, Card, ControlledTextField } from '@/components'
@@ -31,11 +31,17 @@ export const CreateNewPassword: FC<CreateNewPasswordProps> = ({ onSubmit }) => {
   const onHandlerSubmit = (data: LoginFormSchema) => {
     onSubmit(data)
   }
+  const handleKeyPress = (event: KeyboardEvent<HTMLFormElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      handleSubmit(onHandlerSubmit)()
+    }
+  }
 
   return (
     <div className={styleCommon.containerForCards}>
       <Card title={'Creat new password'}>
-        <form onSubmit={handleSubmit(onHandlerSubmit)}>
+        <form onKeyDown={handleKeyPress} onSubmit={handleSubmit(onHandlerSubmit)}>
           <ControlledTextField
             control={control}
             errorMessage={errors.password?.message}
