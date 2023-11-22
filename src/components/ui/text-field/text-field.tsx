@@ -67,7 +67,11 @@ export const TextField = /* @__PURE__ */ forwardRef<HTMLInputElement, TextFieldP
           />
         </div>
         {errorMessage && (
-          <Typography className={s.error} variant={'errorMessage'}>
+          <Typography
+            className={s.error}
+            style={{ fontSize: '14px', margin: '0' }}
+            variant={'errorMessage'}
+          >
             {errorMessage}
           </Typography>
         )}
