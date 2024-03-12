@@ -130,16 +130,10 @@ export const CardsPage = () => {
 
   const { data: dataCards } = useGetDecksByIdQuery({ id })
 
-  // const setSearch = (search: string) => {
-  //   dispatch(cardsSlice.actions.setSearch(search))
-  // }
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearch(e.currentTarget.value))
   }
-  // const setItemsPerPage = (itemsPerPage: string) =>
-  //   dispatch(cardsSlice.actions.setItemsPerPage(itemsPerPage))
-  // const setCurrentPage = (currentPage: number) =>
-  //   dispatch(cardsSlice.actions.setCurrentPage(currentPage))
+
   const handlePerPageChange = (newValue: string) => {
     dispatch(setItemsPerPage(newValue))
   }

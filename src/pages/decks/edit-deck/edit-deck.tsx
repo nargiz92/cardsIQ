@@ -16,7 +16,6 @@ type Props = {
 export const EditDeck: FC<Props> = ({ closeEdit, id, isOpenEdit, nameForChange, privates }) => {
   const [name, setName] = useState(nameForChange)
   const [isPrivate, setPrivate] = useState(privates)
-  //const { closeModal, isOpen, openModal } = useModal()
   const [updateDeck] = useUpdateDeckMutation()
   const handleChangePrivate = (isPrivate: boolean) => {
     setPrivate(isPrivate)

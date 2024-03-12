@@ -87,13 +87,12 @@ const decksService = baseApi.injectEndpoints({
         query: args => {
           return {
             method: 'GET',
-            params: args,
+            params: args as Record<string, any> | undefined,
             url: `v2/decks`,
           }
         },
       }),
       getDecksById: builder.query<any, { id: string | undefined }>({
-        // invalidatesTags: ['Decks'],
         query: data => {
           return {
             method: 'GET',

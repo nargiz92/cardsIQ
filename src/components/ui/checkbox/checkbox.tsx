@@ -8,14 +8,14 @@ import { clsx } from 'clsx'
 
 import s from './checkbox.module.scss'
 
-export type CheckboxProps = {
+export type CheckboxProps = Partial<{
   checked: boolean
   disabled?: boolean
   id?: string
   label?: string
   onValueChange: (checked: boolean) => void
   required?: boolean
-}
+}>
 
 export const UniversalCheckbox: FC<CheckboxProps> = ({
   checked,
