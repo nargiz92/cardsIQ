@@ -2,37 +2,39 @@ import { FC } from 'react'
 
 import { Button, Modal, Typography } from '@/components'
 import { useDeleteDeckMutation } from '@/services'
-import { DeleteIcon } from '@/styles/assets/icons/delete-icon'
-import { useModal } from '@/utils/hooks'
 
 import s from './delect-deck.module.scss'
 type Props = {
   deckName: string
-  id: string
+  id?: string
+  isOpenDeleteDecksModal: boolean
+  setOpenDelete: (value: boolean) => void
 }
-export const DeleteDeck: FC<Props> = ({ deckName, id }) => {
+export const DeleteDeck: FC<Props> = ({ deckName, id, isOpenDeleteDecksModal, setOpenDelete }) => {
   const [deleteDeck, { isLoading: isDeleteLoading }] = useDeleteDeckMutation()
 
-  const { closeModal, isOpen, openModal } = useModal()
   const handleDelete = () => {
     deleteDeck({ id: id })
-    closeModal()
+    setOpenDelete(false)
+  }
+  const handleCloseModal = () => {
+    setOpenDelete(false)
   }
 
   return (
     <>
-      <Button onClick={openModal} variant={'link2'}>
-        <DeleteIcon />
-      </Button>
-
-      <Modal onClose={closeModal} open={isOpen} showCloseButton title={'Delete Pack'}>
+      <Modal
+        onClose={handleCloseModal}
+        open={isOpenDeleteDecksModal}
+        showCloseButton
+        title={'Delete Pack'}
+      >
         <Typography className={s.textContainer} variant={'body1'}>
-          {`Do you really want to remove `}
-          <Typography variant={'subtitle1'}> {deckName}</Typography>? All cards will be deleted.
+          {`Do you really want to remove ${deckName}`}? All cards will be deleted.
         </Typography>
 
         <div className={s.buttonContainer}>
-          <Button onClick={closeModal} variant={'secondary'}>
+          <Button onClick={handleCloseModal} variant={'secondary'}>
             Cancel
           </Button>
           <Button disabled={isDeleteLoading} onClick={handleDelete} variant={'primary'}>

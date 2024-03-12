@@ -120,6 +120,11 @@
 
 .errorMessage {
   color: var(--color-danger-300);
+
+  @media screen  and (width<=364px){
+    font-size: 12px;
+    line-height: 12px;
+  }
 }
 
 .secondary {

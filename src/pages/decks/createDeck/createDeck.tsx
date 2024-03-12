@@ -41,7 +41,7 @@ export const CreateDeck = () => {
     closeModal()
     setDecksPhoto(decksPhoto)
   }
-  const error = decksName.length < 3
+  const error = decksName.length < 3 || decksName.length >= 30
 
   return (
     <>
@@ -60,6 +60,9 @@ export const CreateDeck = () => {
         <div className={s.nameContainer}>
           <TextField
             autoFocus
+            errorMessage={
+              decksName.length >= 30 ? 'Name must be shorter than or equal to 30 characters' : ''
+            }
             label={'Name Pack'}
             onChange={e => setDecksName(e.currentTarget.value)}
             value={decksName}

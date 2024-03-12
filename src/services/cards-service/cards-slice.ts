@@ -1,13 +1,20 @@
 import { Sort } from '@/pages/decks/decks'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-
-const initialState = {
+type CartsType = {
+  answer: string
+  currentPage: number
+  itemsPerPage: string
+  question: string
+  search: string
+  sortCard: Sort
+}
+const initialState: CartsType = {
   answer: '',
   currentPage: 1,
   itemsPerPage: '10',
   question: '',
   search: '',
-  sortCard: {} as Sort,
+  sortCard: null,
 }
 
 export const cardsSlice = createSlice({
@@ -24,7 +31,7 @@ export const cardsSlice = createSlice({
       state.itemsPerPage = action.payload
     },
     setQuestion: (state, action) => {
-      state.sortCard = action.payload
+      state.question = action.payload
     },
     setSearch: (state, action: PayloadAction<string>) => {
       state.search = action.payload
@@ -34,3 +41,5 @@ export const cardsSlice = createSlice({
     },
   },
 })
+export const { setAnswer, setCurrentPage, setItemsPerPage, setQuestion, setSearch, setSortCards } =
+  cardsSlice.actions

@@ -1,0 +1,14 @@
+.buttonsContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+
+  @media screen and (width<=660px){
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  @media screen and (width<=500px){
+    justify-content: space-around;
+  }
+}

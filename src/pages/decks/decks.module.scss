@@ -8,10 +8,18 @@
 
   .settingsContainer {
     display: flex;
+    flex-wrap: wrap;
     align-items: end;
     justify-content: space-between;
+
     margin-bottom: 36px;
   }
+}
+
+
+
+.decksName{
+cursor: pointer;
 }
 
 .modalContainer {
@@ -52,14 +60,22 @@
   background-size: cover;
 }
 
-.buttonsContainer {
-  display: flex;
-  gap: 10px;
-  justify-content: start;
-}
+
 
 .imgAndNameContainer {
   display: flex;
+flex-wrap: wrap;
   gap: 0.62rem;
   align-items: center;
+
+  >img {
+   min-width: 110px;
+    height: 48px;
+
+    @media screen and (width<=660px){
+      min-width: 60px;
+      height: 40px;
+    }
+  }
+
 }

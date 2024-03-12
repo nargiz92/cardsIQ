@@ -19,7 +19,7 @@ export const SignInPage = () => {
   return (
     <>
       <Header />
-      <LoginForm onSubmit={login} />;
+      <LoginForm onSubmit={login} />
     </>
   )
 }

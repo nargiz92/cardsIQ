@@ -1,45 +1,76 @@
 import { ComponentPropsWithoutRef, FC } from 'react'
 
 import { TableHead, TableHeadCell, TableRow } from '@/components'
+import { setSort } from '@/services'
+import { setSortCards } from '@/services/cards-service'
+import { useAppDispatch, useAppSelector } from '@/services/store'
 
 import s from './decks-header.module.scss'
 
 import { DownIcon, UpIcon } from '../../../styles/assets/icons'
-import { Column, Sort } from '../decks'
+import { Column } from '../decks'
 export const SortedHeaderDecks: FC<
   Omit<
     ComponentPropsWithoutRef<'thead'> & {
       columns: Column[]
-      onSort?: (sort: Sort) => void
-      sort?: Sort
+      isCards: boolean
     },
     'children'
   >
-> = ({ columns, onSort, sort, ...restProps }) => {
+> = ({ columns, isCards, ...restProps }) => {
+  const sort = useAppSelector(state => state.deckSlice.sort)
+  const sortCards = useAppSelector(state => state.cardsSlice.sortCard)
+  const dispatch = useAppDispatch()
   const handleSort = (key: string, sortable?: boolean) => () => {
-    if (!onSort || !sortable) {
+    if (!setSort || !sortable) {
       return
     }
 
     if (sort?.key !== key) {
-      return onSort({ direction: 'asc', key })
+      return dispatch(setSort({ direction: 'asc', key }))
     }
 
     if (sort.direction === 'desc') {
-      return onSort({} as Sort)
+      return dispatch(setSort(null))
     }
 
-    return onSort({
-      direction: sort?.direction === 'asc' ? 'desc' : 'asc',
-      key,
-    })
+    return dispatch(
+      setSort({
+        direction: sort?.direction === 'asc' ? 'desc' : 'asc',
+        key,
+      })
+    )
+  }
+  const handleSortCards = (key: string, sortable?: boolean) => () => {
+    debugger
+    if (!setSortCards || !sortable) {
+      return
+    }
+
+    if (sortCards?.key !== key) {
+      return dispatch(setSortCards({ direction: 'asc', key }))
+    }
+
+    if (sortCards.direction === 'desc') {
+      return dispatch(setSortCards(null))
+    }
+
+    return dispatch(
+      setSortCards({
+        direction: sortCards?.direction === 'asc' ? 'desc' : 'asc',
+        key,
+      })
+    )
   }
 
   return (
     <TableHead {...restProps}>
       <TableRow>
         {columns.map(({ key, sortable, title }) => (
-          <TableHeadCell key={key} onClick={handleSort(key, sortable)}>
+          <TableHeadCell
+            key={key}
+            onClick={isCards ? handleSortCards(key, sortable) : handleSort(key, sortable)}
+          >
             <div className={s.container}>
               {title}
               {sort && sort.key === key && (

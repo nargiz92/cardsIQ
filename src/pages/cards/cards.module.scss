@@ -9,6 +9,18 @@
   gap: 0.62rem;
 }
 
+.titleMenu{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.settingsBox{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .imgAndTitle {
   display: flex;
   gap: 5px;

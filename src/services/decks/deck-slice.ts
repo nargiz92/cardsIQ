@@ -1,14 +1,35 @@
+import { ReactNode } from 'react'
+
 import { Sort } from '@/pages/decks/decks'
 import defaultAva from '@/styles/assets/icons/image-pen-svgrepo-com.svg'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-
-const initialState = {
+type DecksSliceType = {
+  addCardSelectValue: string
+  authorId: string
+  ava: ReactNode
+  cardsAnswer: string
+  cardsQuestion: string
+  currentDecksPage: number
+  decksName: string
+  isCover: string
+  isPrivates: boolean
+  itemsPerPage: string
+  radioSelectedValue: string
+  ranger: number[]
+  searchByName: string
+  showAnswer: boolean
+  showButton: boolean
+  sliderValues: number[]
+  sort: Sort
+  userId: string
+}
+const initialState: DecksSliceType = {
   addCardSelectValue: 'text',
   authorId: '',
   ava: defaultAva,
   cardsAnswer: '',
   cardsQuestion: '',
-  currentPage: 1,
+  currentDecksPage: 1,
   decksName: '',
   isCover: '',
   isPrivates: false,
@@ -19,7 +40,7 @@ const initialState = {
   showAnswer: false,
   showButton: true,
   sliderValues: [0, 100],
-  sort: {} as Sort,
+  sort: null,
   userId: '',
 }
 
@@ -42,8 +63,8 @@ export const deckSlice = createSlice({
     setCardsQuestion: (state, action) => {
       state.cardsQuestion = action.payload
     },
-    setCurrentPage: (state, action: PayloadAction<number>) => {
-      state.currentPage = action.payload
+    setCurrentDecksPage: (state, action: PayloadAction<number>) => {
+      state.currentDecksPage = action.payload
     },
 
     setDecksName: (state, action) => {
@@ -90,7 +111,12 @@ export const {
   setAva,
   setCardsAnswer,
   setCardsQuestion,
+  setCurrentDecksPage,
+  setItemsPerPage,
+  setSearchByName,
   setSelectedValue,
   setShowAnswer,
   setShowButton,
+  setSliderValues,
+  setSort,
 } = deckSlice.actions
