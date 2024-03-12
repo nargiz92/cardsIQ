@@ -1,5 +1,4 @@
 import {
-  CreateCardRequestType,
   Deck,
   DecksResponse,
   GetDeckArgs,
@@ -14,14 +13,6 @@ import { RootState } from '@/services/store'
 const decksService = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
-      createCard: builder.mutation<any, CreateCardRequestType>({
-        invalidatesTags: ['Cards'],
-        query: ({ answer, answerImg, deckId, question, questionImg }) => ({
-          body: { answer, answerImg, question, questionImg },
-          method: 'POST',
-          url: `v1/decks/${deckId}/cards`,
-        }),
-      }),
       createDeck: builder.mutation<Deck, FormData>({
         invalidatesTags: ['Decks'],
         // async onQueryStarted(_, { dispatch, queryFulfilled, getState }) {
@@ -58,7 +49,7 @@ const decksService = baseApi.injectEndpoints({
           url: 'v1/decks',
         }),
       }),
-      deleteDeck: builder.mutation<void, { id: string }>({
+      deleteDeck: builder.mutation<void, { id: string | undefined }>({
         invalidatesTags: ['Decks'],
         async onQueryStarted({ id }, { dispatch, getState, queryFulfilled }) {
           const state = getState() as RootState
@@ -67,12 +58,12 @@ const decksService = baseApi.injectEndpoints({
               'getDecks',
               {
                 authorId: state.deckSlice.authorId,
-                currentPage: state.deckSlice.currentPage,
+                currentPage: state.deckSlice.currentDecksPage,
                 itemsPerPage: +state.deckSlice.itemsPerPage,
                 maxCardsCount: state.deckSlice.sliderValues[1],
                 minCardsCount: state.deckSlice.sliderValues[0],
                 name: state.deckSlice.searchByName,
-                orderBy: state.deckSlice.sort.direction,
+                orderBy: state.deckSlice.sort?.direction,
               },
               draft => {
                 draft.items = draft.items.filter(item => item.id !== id)
@@ -97,18 +88,18 @@ const decksService = baseApi.injectEndpoints({
           return {
             method: 'GET',
             params: args,
-            url: `v1/decks`,
+            url: `v2/decks`,
           }
         },
       }),
       getDecksById: builder.query<any, { id: string | undefined }>({
+        // invalidatesTags: ['Decks'],
         query: data => {
           return {
             method: 'GET',
             url: `v1/decks/${data.id}`,
           }
         },
-        // invalidatesTags: ["Decks"],
       }),
       learnCards: builder.query<LearnResponse, LearnRequestType>({
         providesTags: ['Learn'],
@@ -158,7 +149,6 @@ const decksService = baseApi.injectEndpoints({
 })
 
 export const {
-  useCreateCardMutation,
   useCreateDeckMutation,
   useDeleteDeckMutation,
   useGetDecksByIdQuery,

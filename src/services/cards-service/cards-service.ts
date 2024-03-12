@@ -1,4 +1,4 @@
-import { baseApi } from '@/services'
+import { CreateCardRequestType, baseApi } from '@/services'
 import {
   CardsResponse,
   GetCardsType,
@@ -8,6 +8,14 @@ import {
 const cardsService = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
+      createCard: builder.mutation<any, CreateCardRequestType>({
+        invalidatesTags: ['Cards'],
+        query: ({ answer, answerImg, deckId, question, questionImg }) => ({
+          body: { answer, answerImg, question, questionImg },
+          method: 'POST',
+          url: `v1/decks/${deckId}/cards`,
+        }),
+      }),
       deleteCards: builder.mutation<any, { id: string }>({
         invalidatesTags: ['Cards'],
 
@@ -70,6 +78,7 @@ const cardsService = baseApi.injectEndpoints({
 })
 
 export const {
+  useCreateCardMutation,
   useDeleteCardsMutation,
   useGetCardsQuery,
   useGetDecksCardsQuery,

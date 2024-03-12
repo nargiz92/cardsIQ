@@ -17,7 +17,7 @@ export const ForgotPasswordPage = () => {
   return (
     <>
       <Header />
-      <ForgotPassword onSubmit={handleRecoverPassword}></ForgotPassword>;
+      <ForgotPassword onSubmit={handleRecoverPassword}></ForgotPassword>
     </>
   )
 }

@@ -1,12 +1,15 @@
 .root {
   display: flex;
+  flex-wrap: wrap;
   gap: 25px;
   align-items: center;
+
   margin: 20px 0;
 }
 
 .container {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   list-style-type: none;
 }

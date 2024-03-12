@@ -1,5 +1,9 @@
 .container {
   margin: 33px 136px 0;
+
+  @media screen and (width<=895px){
+margin: 18px 10px 0;
+  }
 }
 
 .containerForCards {

@@ -1,12 +1,8 @@
 import { ChangeEvent, FC, useState } from 'react'
 
 import { Button, Modal, Selected, TextField } from '@/components'
-import {
-  setAddCardsSelectValue,
-  setCardsAnswer,
-  setCardsQuestion,
-  useCreateCardMutation,
-} from '@/services'
+import { setAddCardsSelectValue } from '@/services'
+import { setAnswer, setQuestion } from '@/services/cards-service'
 import { useAppDispatch, useAppSelector } from '@/services/store'
 
 import s from './add-new-card.module.scss'
@@ -17,15 +13,15 @@ export const questionFormatOptions = [
 ]
 
 type Props = {
+  addNewCard: any
   id: string
 }
-export const AddNewCard: FC<Props> = ({ id }) => {
+export const AddNewCard: FC<Props> = ({ addNewCard, id }) => {
   const dispatch = useAppDispatch()
   const [open, setOpen] = useState(false)
   const selectValue = useAppSelector(state => state.deckSlice.addCardSelectValue)
-  const cardsQuestion = useAppSelector(state => state.deckSlice.cardsQuestion)
-  const cardsAnswer = useAppSelector(state => state.deckSlice.cardsAnswer)
-  const [addNewCard] = useCreateCardMutation()
+  const cardsQuestion = useAppSelector(state => state.cardsSlice.question)
+  const cardsAnswer = useAppSelector(state => state.cardsSlice.answer)
 
   const handleAddNewCard = () => {
     addNewCard({
@@ -34,7 +30,10 @@ export const AddNewCard: FC<Props> = ({ id }) => {
       question: cardsQuestion,
     })
     handleClose()
+    dispatch(setQuestion(''))
+    dispatch(setAnswer(''))
   }
+
   const handleClose = () => {
     setOpen(false)
   }
@@ -45,17 +44,12 @@ export const AddNewCard: FC<Props> = ({ id }) => {
   const handleChangeSelectValue = (newValue: string) => {
     setSelectValue(newValue)
   }
-  const setQuestion = (question: string) => {
-    dispatch(setCardsQuestion(question))
-  }
-  const setAnswer = (answer: string) => {
-    dispatch(setCardsAnswer(answer))
-  }
+
   const handleChangeQuestion = (e: ChangeEvent<HTMLInputElement>) => {
-    setQuestion(e.currentTarget.value)
+    dispatch(setQuestion(e.currentTarget.value))
   }
   const handleChangeCardsAnswer = (e: ChangeEvent<HTMLInputElement>) => {
-    setAnswer(e.currentTarget.value)
+    dispatch(setAnswer(e.currentTarget.value))
   }
 
   return (
@@ -76,12 +70,12 @@ export const AddNewCard: FC<Props> = ({ id }) => {
           value={selectValue}
         ></Selected>
         <TextField
+          autoFocus
           label={'Question'}
           onChange={handleChangeQuestion}
           value={cardsQuestion}
         ></TextField>
         <TextField
-          autoFocus
           label={'Answer'}
           onChange={handleChangeCardsAnswer}
           value={cardsAnswer}

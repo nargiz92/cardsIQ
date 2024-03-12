@@ -5,8 +5,8 @@ export type GetDeckArgs = {
   maxCardsCount?: number
   minCardsCount?: number
   name?: string
-  orderBy?: string
-}
+  orderBy?: null | string
+} | null
 export interface Pagination {
   currentPage: number
   itemsPerPage: number
