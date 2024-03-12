@@ -69,9 +69,9 @@ export type LearnResponse = {
   shots: number
   updated: string
 }
-export type UpdateDeckRequestType = {
+export type UpdateDeckRequestType = Partial<{
   cover?: string
   id: string
   isPrivate: boolean
   name: string
-}
+}>

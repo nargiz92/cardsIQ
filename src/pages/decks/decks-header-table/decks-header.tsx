@@ -42,7 +42,6 @@ export const SortedHeaderDecks: FC<
     )
   }
   const handleSortCards = (key: string, sortable?: boolean) => () => {
-    debugger
     if (!setSortCards || !sortable) {
       return
     }
