@@ -1,5 +1,7 @@
 import { Typography } from '@/components'
 import { Rating } from '@/components/ui/raiting'
+import { DeleteCard } from '@/pages/cards/delete-card'
+import { EditCard } from '@/pages/cards/edit-card'
 import { CardsResponse } from '@/services/cards-service/cards-types'
 
 import s from '@/pages/decks/decksMob/decksMob.module.scss'
@@ -31,9 +33,11 @@ export const CardsMobTable = ({ data }: CardsMobTableType) => {
             </div>
             <div className={s.deck}>
               <Typography variant={'subtitle2'}>Grade</Typography>
-              <Typography variant={'body1'}>
-                <Rating value={card.grade} />
-              </Typography>
+              <Rating value={card.grade} />
+            </div>
+            <div className={s.tool}>
+              <EditCard card={card} />
+              <DeleteCard cardName={card.question} id={card.id} />
             </div>
           </div>
         )

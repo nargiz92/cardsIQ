@@ -38,8 +38,13 @@ const cardsService = baseApi.injectEndpoints({
       getDecksCards: builder.query<CardsResponse, GetCardsType>({
         providesTags: ['Cards'],
         query: data => {
+          const args = { ...data }
+
+          delete args['id']
+
           return {
             method: 'GET',
+            params: args,
             url: `v1/decks/${data.id}/cards`,
           }
         },
