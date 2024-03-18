@@ -117,9 +117,8 @@ export const CardsPage = () => {
 
     return `${sort.key}-${sort.direction}`
   }, [sort])
-
   const { data: myData } = useGetMeQuery()
-  const { currentData: data, isLoading } = useGetDecksCardsQuery({
+  const { currentData: dataCards, isLoading } = useGetDecksCardsQuery({
     answer: answer,
     currentPage,
     id,
@@ -128,7 +127,7 @@ export const CardsPage = () => {
     question: debounceValue[0],
   })
 
-  const { data: dataCards } = useGetDecksByIdQuery({ id })
+  const { data: dataDecks } = useGetDecksByIdQuery({ id })
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearch(e.currentTarget.value))
@@ -150,7 +149,7 @@ export const CardsPage = () => {
   if (isLoading) {
     return <Loader />
   }
-  const isMyCards = myData?.id === dataCards?.userId
+  const isMyCards = myData?.id === dataDecks?.userId
 
   return (
     <div className={`${styleCon.container}`}>
@@ -160,31 +159,31 @@ export const CardsPage = () => {
       <div className={s.settingsBox}>
         <div className={s.titleMenu}>
           <Typography color={'secondary'} variant={'large'}>
-            {dataCards?.name}
+            {dataDecks?.name}
           </Typography>
           {isMyCards && (
-            <UserActionMenu cardsCaunt={dataCards?.cardsCount} decksTitle={dataCards.name} />
+            <UserActionMenu cardsCaunt={dataDecks?.cardsCount} decksTitle={dataDecks.name} />
           )}
         </div>
         {isMyCards ? (
-          <AddNewCard addNewCard={addNewCard} id={dataCards?.id} />
+          <AddNewCard addNewCard={addNewCard} id={dataDecks?.id} />
         ) : (
           <Button disabled onClick={() => handleLearnCard(id)}>
             Learn to Deck
           </Button>
         )}
       </div>
-      {dataCards?.cover && (
+      {dataDecks?.cover && (
         <div className={s.imgOfDecks}>
           <img
             alt={'incorrect img'}
-            src={dataCards?.cover}
+            src={dataDecks?.cover}
             style={{ height: '107px', width: '170px' }}
           />
         </div>
       )}
 
-      {dataCards?.cardsCount !== 0 || isSuccess ? (
+      {dataDecks?.cardsCount !== 0 || isSuccess ? (
         <>
           <TextField
             onChange={handleSearch}
@@ -193,12 +192,12 @@ export const CardsPage = () => {
             value={search}
           />
           {windowSize.innerWidth <= 500 || windowWidth.current <= 500 ? (
-            <CardsMobTable data={data} />
+            <CardsMobTable data={dataCards} />
           ) : (
             <Table>
               <SortedHeaderDecks columns={isMyCards ? columns : columnsFriends} isCards />
               <TableBody>
-                {data?.items.map(card => {
+                {dataCards?.items.map(card => {
                   return (
                     <TableRow key={card.id}>
                       <TableCell>
@@ -244,7 +243,7 @@ export const CardsPage = () => {
             </Table>
           )}
           <Pagination
-            count={100}
+            count={dataCards?.pagination.totalPages ?? 0}
             onChange={handleChangePage}
             onPerPageChange={handlePerPageChange}
             page={currentPage}

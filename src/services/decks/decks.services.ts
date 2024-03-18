@@ -153,7 +153,6 @@ export const {
   useGetDecksByIdQuery,
   useGetDecksQuery,
   useLearnCardsQuery,
-
   useNextQuestionMutation,
   useUpdateDeckMutation,
 } = decksService

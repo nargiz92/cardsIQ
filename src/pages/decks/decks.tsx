@@ -273,7 +273,7 @@ export const Decks = () => {
           </Table>
         )}
         <Pagination
-          count={100}
+          count={data?.pagination.totalPages ?? 0}
           onChange={handleChangePage}
           onPerPageChange={handlePerPageChange}
           page={currentPage}
