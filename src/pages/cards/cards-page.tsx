@@ -162,7 +162,7 @@ export const CardsPage = () => {
             {dataDecks?.name}
           </Typography>
           {isMyCards && (
-            <UserActionMenu cardsCaunt={dataDecks?.cardsCount} decksTitle={dataDecks.name} />
+            <UserActionMenu cardsCount={dataDecks?.cardsCount} decksTitle={dataDecks.name} />
           )}
         </div>
         {isMyCards ? (
