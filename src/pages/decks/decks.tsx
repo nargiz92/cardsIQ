@@ -225,7 +225,6 @@ export const Decks = () => {
                     <TableCell className={s.decksName} onClick={() => handleUserDeckClick(deck.id)}>
                       <div className={s.imgAndNameContainer}>
                         {deck?.cover && <img alt={'imag'} src={deck.cover} />}
-
                         {deck.name.length > 10 ? deck.name.slice(0, 8) + `...` : deck.name}
                       </div>
                     </TableCell>
