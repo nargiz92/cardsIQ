@@ -30,11 +30,8 @@ export const PersonalInfoPage = () => {
     if (nick) {
       formData.append('name', nick)
     }
-    // console.log({ avaMy, formData, nick })
     userDataForUpdate(formData)
   }
-  //
-  // console.log({ avaMy })
 
   return (
     <div className={s.container}>
@@ -45,7 +42,6 @@ export const PersonalInfoPage = () => {
         onClickLogout={handleLogout}
         patchPhoto={patchData}
         photo={me?.avatar}
-        // savePhoto={setAvaMy}
         valueOfName={nick}
       />
     </div>

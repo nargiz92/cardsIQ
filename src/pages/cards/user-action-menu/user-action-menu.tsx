@@ -9,20 +9,21 @@ import { LearnIcon } from '@/styles/assets/icons/learn-icon'
 import { PenIcon } from '@/styles/assets/icons/pen-icon'
 import { useModal } from '@/utils/hooks'
 type UserActionMenuProps = {
-  cardsCaunt: number
+  cardsCount: number
   decksTitle: string
 }
-export const UserActionMenu = ({ cardsCaunt, decksTitle }: UserActionMenuProps) => {
+export const UserActionMenu = ({ cardsCount, decksTitle }: UserActionMenuProps) => {
   const navigate = useNavigate()
   const { id } = useParams()
   const { closeModal: closeEditModal, isOpen: isOpenEdit, openModal: openEditModal } = useModal()
   const [isOpenDeleteDecksModal, setOpenDelete] = useState(false)
 
   const handleLearnCard = () => {
-    if (cardsCaunt !== 0) {
+    if (cardsCount !== 0) {
       navigate(`/learn/${id}`)
     }
   }
+  const handleCloseDeleteModal = () => setOpenDelete(false)
 
   return (
     <>
@@ -52,10 +53,10 @@ export const UserActionMenu = ({ cardsCaunt, decksTitle }: UserActionMenuProps) 
         nameForChange={decksTitle}
       />
       <DeleteDeck
+        closeDeleteModal={handleCloseDeleteModal}
         deckName={decksTitle}
         id={id}
         isOpenDeleteDecksModal={isOpenDeleteDecksModal}
-        setOpenDelete={setOpenDelete}
       />
     </>
   )
