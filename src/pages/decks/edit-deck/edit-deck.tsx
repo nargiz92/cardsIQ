@@ -20,6 +20,7 @@ export const EditDeck: FC<Props> = ({ closeEdit, id, isOpenEdit, nameForChange, 
   const handleChangePrivate = (isPrivate: boolean) => {
     setPrivate(isPrivate)
   }
+
   const handleChangeName = () => {
     updateDeck({
       id,

@@ -8,28 +8,16 @@ import { LearnIcon } from '@/styles/assets/icons/learn-icon'
 import s from './decksMob.module.scss'
 
 type DecksMobType = {
-  closeEditModal: () => void
   decksData?: DecksResponse
   isMyDeck?: string
-  isOpenDeleteDecksModal: boolean
-  isOpenEdit: boolean
   learnDeck: (id: string) => void
   onClickDeck: (value: string) => void
-  openDelete: () => void
-  openEditModal: () => void
-  setOpenDelete: (value: boolean) => void
 }
 export const DecksMobTable: FC<DecksMobType> = ({
-  closeEditModal,
   decksData,
   isMyDeck,
-  isOpenDeleteDecksModal,
-  isOpenEdit,
   learnDeck,
   onClickDeck,
-  openDelete,
-  openEditModal,
-  setOpenDelete,
 }) => {
   return (
     <div className={s.box}>
@@ -57,16 +45,7 @@ export const DecksMobTable: FC<DecksMobType> = ({
               <Typography variant={'body1'}>{deck.author.name}</Typography>
             </div>
             {isMyDeck === deck.userId ? (
-              <DecksTool
-                closeEditModal={closeEditModal}
-                decksData={deck}
-                isOpenDeleteDecksModal={isOpenDeleteDecksModal}
-                isOpenEdit={isOpenEdit}
-                learnDeck={learnDeck}
-                openDelete={openDelete}
-                openEditModal={openEditModal}
-                setOpenDelete={setOpenDelete}
-              />
+              <DecksTool decksData={deck} learnDeck={learnDeck} />
             ) : (
               <Button
                 disabled={deck.cardsCount === 0}

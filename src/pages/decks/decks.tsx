@@ -32,7 +32,6 @@ import { deckSlice } from '@/services/decks/deck-slice'
 import { useAppDispatch, useAppSelector } from '@/services/store'
 import { CleanIcon } from '@/styles/assets/icons/clear-icon'
 import { LearnIcon } from '@/styles/assets/icons/learn-icon'
-import { useModal } from '@/utils/hooks'
 import { useDebounce } from 'use-debounce'
 
 import styleContainer from '../../components/common/container.module.scss'
@@ -98,8 +97,6 @@ export const Decks = () => {
   const debounceValue = useDebounce(searchByName, 1000)
   const debounceOfRangerValue = useDebounce(sliderValues, 500)
   const [value1, value2] = debounceOfRangerValue[0]
-  const { closeModal: closeEditModal, isOpen: isOpenEdit, openModal: openEditModal } = useModal()
-  const [isOpenDeleteDecksModal, setOpenDelete] = useState(false)
   const [windowSize, setWindowSize] = useState(getWindowSize())
   const windowWidth = useRef(window.innerWidth)
 
@@ -164,9 +161,6 @@ export const Decks = () => {
   const handleLearnCards = (id: string) => {
     navigate(`/learn/${id}`)
   }
-  const handleOpenModal = () => {
-    setOpenDelete(true)
-  }
 
   if (isLoading) {
     return <Loader />
@@ -216,16 +210,10 @@ export const Decks = () => {
         </div>
         {windowSize.innerWidth <= 500 || windowWidth.current <= 500 ? (
           <DecksMobTable
-            closeEditModal={closeEditModal}
             decksData={data}
             isMyDeck={myData?.id}
-            isOpenDeleteDecksModal={isOpenDeleteDecksModal}
-            isOpenEdit={isOpenEdit}
             learnDeck={handleLearnCards}
             onClickDeck={handleUserDeckClick}
-            openDelete={handleOpenModal}
-            openEditModal={openEditModal}
-            setOpenDelete={setOpenDelete}
           />
         ) : (
           <Table>
@@ -246,16 +234,7 @@ export const Decks = () => {
                     <TableCell>{deck.author.name}</TableCell>
                     <TableCell>
                       {myData?.id === deck.userId ? (
-                        <DecksTool
-                          closeEditModal={closeEditModal}
-                          decksData={deck}
-                          isOpenDeleteDecksModal={isOpenDeleteDecksModal}
-                          isOpenEdit={isOpenEdit}
-                          learnDeck={handleLearnCards}
-                          openDelete={handleOpenModal}
-                          openEditModal={openEditModal}
-                          setOpenDelete={setOpenDelete}
-                        />
+                        <DecksTool decksData={deck} key={deck.id} learnDeck={handleLearnCards} />
                       ) : (
                         <Button
                           disabled={deck.cardsCount === 0}

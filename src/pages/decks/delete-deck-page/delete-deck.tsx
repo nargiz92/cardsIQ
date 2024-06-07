@@ -5,26 +5,28 @@ import { useDeleteDeckMutation } from '@/services'
 
 import s from './delect-deck.module.scss'
 type Props = {
+  closeDeleteModal: () => void
   deckName: string
   id?: string
   isOpenDeleteDecksModal: boolean
-  setOpenDelete: (value: boolean) => void
 }
-export const DeleteDeck: FC<Props> = ({ deckName, id, isOpenDeleteDecksModal, setOpenDelete }) => {
+export const DeleteDeck: FC<Props> = ({
+  closeDeleteModal,
+  deckName,
+  id,
+  isOpenDeleteDecksModal,
+}) => {
   const [deleteDeck, { isLoading: isDeleteLoading }] = useDeleteDeckMutation()
 
   const handleDelete = () => {
     deleteDeck({ id: id })
-    setOpenDelete(false)
-  }
-  const handleCloseModal = () => {
-    setOpenDelete(false)
+    closeDeleteModal()
   }
 
   return (
     <>
       <Modal
-        onClose={handleCloseModal}
+        onClose={closeDeleteModal}
         open={isOpenDeleteDecksModal}
         showCloseButton
         title={'Delete Pack'}
@@ -34,7 +36,7 @@ export const DeleteDeck: FC<Props> = ({ deckName, id, isOpenDeleteDecksModal, se
         </Typography>
 
         <div className={s.buttonContainer}>
-          <Button onClick={handleCloseModal} variant={'secondary'}>
+          <Button onClick={closeDeleteModal} variant={'secondary'}>
             Cancel
           </Button>
           <Button disabled={isDeleteLoading} onClick={handleDelete} variant={'primary'}>
